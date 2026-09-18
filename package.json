@@ -4,9 +4,16 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "oxfmt": "^0.68.0",
+    "oxlint": "^1.83.0"
   },
   "peerDependencies": {
     "typescript": "^7"
+  },
+  "dependencies": {
+    "@opentui/core": "^0.5.11",
+    "hono": "^4.13.8",
+    "openai": "^7.18.0"
   }
 }
