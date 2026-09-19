@@ -45,8 +45,7 @@ function buildPrompt(input: DecideActionInput): string {
   const repeatedLastActionCount = lastAction === null ? 0 : repeatedTail(actions, lastAction);
   const inspected = hasRecentInspectResult(input.recentHistory);
 
-  return `あなたは coding agent "jev" のルーターです。文章回答ではなく、次に1つだけ実行すべきアクションを選びます。
-
+  return `
 タスク:
 ${input.task}
 
@@ -61,8 +60,8 @@ ${input.workspace}
 - finish: タスクが完了した、またはこれ以上の変更が不要なときに終了する
 
 ループ防止の最重要ルール:
-1. 直前と同じアクションを安易に選ばない。特に同じ inspect の連続は禁止。
-2. recent_history に inspect 結果があり、対象ファイルや変更方針が分かっている場合は、次は inspect ではなく think / write_file / run_command / finish のいずれかへ進む。
+1. 直前と同じアクションを安易に選ばない。
+2. 進捗がないアクションは避ける。
 3. 同一アクションが2回以上続いている場合は、原則として必ず別アクションへ遷移する。
 4. 進捗を生まない再調査を避ける。情報が不足している理由を具体的に説明できない inspect は選ばない。
 5. write_file 後は、必要なら run_command で検証し、検証不要または完了済みなら finish を選ぶ。

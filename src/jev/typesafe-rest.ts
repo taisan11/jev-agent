@@ -4,7 +4,7 @@ const defaultBaseUrl = "https://api.typesafe.ai";
 
 const actionCriteria: Record<AgentAction, string> = {
   inspect:
-    "Walk down from the workspace root and locally read relevant text files; do not use an LLM.",
+    "Walk down from the workspace root and locally read relevant text files.",
   think: "Reason about the task and decide the next implementation step.",
   run_command: "Run a command to inspect, test, build, or modify the workspace.",
   write_file: "Create or update a workspace file with a complete implementation.",
